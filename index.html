@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Introduction to alpinejs</title>
+</head>
+
+<body>
+
+    <style>
+        [x-cloak] {
+            display: none;
+        }
+    </style>
+
+    <div class="container mx-auto mt-6 max-w-sm">
+        <h1 class="text-5xl mb-4">Alpine JS</h1>
+        <!-- TOGGLING ELEMENTS -> This aspect of interactivity deals with a tap of 
+        button and it shows some hidden elements. 
+        Tap again, it hides -->
+        <div x-data="{open: false}">
+            <button x-on:click="open = !open" class="bg-gray-700 text-white px-4 py-2 rounded-xl">
+                Toggle
+            </button>
+            <div x-show="open" x-cloak>
+                <p class="bg-gray-200 p-4 my-6 rounded">
+                    Lorem ipsum dolor sit amet consectetur
+                    adipisicing elit. Distinctio consequatur
+                    veniam recusandae repellendus voluptatibus
+                    deserunt libero, repellat nobis. Dignissimos
+                    sed nihil doloribus exercitationem rerum asperiores
+                    at suscipit temporibus? Ipsam, totam.
+                </p>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</body>
+
+</html>
