@@ -21,7 +21,11 @@
         <h1 class="text-5xl mb-4">Alpine JS</h1>
         <!-- x-data -->
 
-        <div x-data="{open: false, name: 'Newton'}">
+        <div x-data="{
+            open: false,
+            name: 'Newton',
+            search: ''
+            }">
         <!-- x-on & x-bind -->
             <button x-on:click="open = !open" 
             x-bind:class="open ? 'bg-blue-400' : 'bg-slate-700'"
@@ -41,6 +45,16 @@
                 </p>
             </div>
                <div class="my-4">Hy my name is <span x-text="name" class="font-bold"></span></div>
+
+        <!-- x-effect -->
+               <div x-effect="console.log(open)"></div>
+
+        <!-- x-model -->
+               <div>
+                  <input x-model="search" class="font-bold p-2 w-full mb-2 mt-6" type="text" placeholder="Search for something">
+                  <span class="font-bold">Searching for:</span>
+                  <span x-text="search" class="font-bold"></span>
+               </div>
         </div>
 
 
