@@ -19,14 +19,18 @@
 
     <div class="container mx-auto mt-6 max-w-sm">
         <h1 class="text-5xl mb-4">Alpine JS</h1>
-        <!-- TOGGLING ELEMENTS -> This aspect of interactivity deals with a tap of 
-        button and it shows some hidden elements. 
-        Tap again, it hides -->
-        <div x-data="{open: false}">
-            <button x-on:click="open = !open" class="bg-gray-700 text-white px-4 py-2 rounded-xl">
+        <!-- x-data -->
+
+        <div x-data="{open: false, name: 'Newton'}">
+        <!-- x-on & x-bind -->
+            <button x-on:click="open = !open" 
+            x-bind:class="open ? 'bg-blue-400' : 'bg-slate-700'"
+            class="text-white px-4 py-2 rounded-xl">
                 Toggle
             </button>
-            <div x-show="open" x-cloak>
+
+        <!-- x-show -->
+            <div x-show="open" x-transition x-cloak>
                 <p class="bg-gray-200 p-4 my-6 rounded">
                     Lorem ipsum dolor sit amet consectetur
                     adipisicing elit. Distinctio consequatur
@@ -36,6 +40,7 @@
                     at suscipit temporibus? Ipsam, totam.
                 </p>
             </div>
+               <div class="my-4">Hy my name is <span x-text="name" class="font-bold"></span></div>
         </div>
 
 
