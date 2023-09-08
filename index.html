@@ -24,8 +24,15 @@
         <div x-data="{
             open: false,
             name: 'Newton',
-            search: ''
-            }">
+            search: '',
+            posts: [
+                 {title: 'Post One'},
+                 {title: 'Post Two'},
+                 {title: 'Post Three'},
+                 {title: 'Post Four'},
+            ]
+            }
+            ">
         <!-- x-on & x-bind -->
             <button x-on:click="open = !open" 
             x-bind:class="open ? 'bg-blue-400' : 'bg-slate-700'"
@@ -50,12 +57,44 @@
                <div x-effect="console.log(open)"></div>
 
         <!-- x-model -->
-               <div>
+               <p>
                   <input x-model="search" class="font-bold p-2 w-full mb-2 mt-6" type="text" placeholder="Search for something">
                   <span class="font-bold">Searching for:</span>
                   <span x-text="search" class="font-bold"></span>
-               </div>
-        </div>
+               </p>
+
+        <!-- x-if -->
+              <template x-if="open">
+                  <div class="bg-gray-50 p-2 mt-8 font-bold">Template based on a condition</div>
+              </template>
+
+        <!-- x-for -->
+             <h3 class="text-2xl mt-6 mb-3 font-bold">Posts</h3>
+             <template x-for="post in posts">
+                  <div x-text="post.title"></div>
+             </template>
+             <button @click="posts.push({title: 'Next Post'})" x-if="open" class="bg-blue-800 text-white px-4 py-3 mt-6 rounded-lg">
+                Add New Post
+             </button>
+
+        <!-- x-ref -->   
+             <!-- x-ref -> show hidden element -->    
+             <div class="my-4">
+                <span x-ref="text"></span>
+                <button @click="$refs.text.innerText = 'Hello World'" class="bg-red-700 text-white mx-6 py-3 px-4 rounded-xl">
+                   Button
+                </button>
+             </div>
+
+        <!-- x-ref --> 
+             <!-- x-ref -> hid element --> 
+             <div class="my-6">
+                 <span x-ref="text">Hello World</span>
+                 <button @click="$refs.text.remove('')" class="bg-green-700 text-white mx-6 py-3 px-4 rounded-lg">
+                    Button
+                 </button>
+             </div>
+
 
 
 
