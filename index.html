@@ -89,7 +89,7 @@
              </div>
 
         <!-- x-ref --> 
-             <!-- x-ref -> hid element --> 
+             <!-- x-ref -> hide element --> 
              <div class="my-6">
                  <span x-ref="text">Hello World</span>
                  <button @click="$refs.text.remove('')" class="bg-green-700 text-white mx-6 py-3 px-4 rounded-lg">
@@ -107,7 +107,33 @@
                 Replace Text
             </button>
 
-    </div>
+        <!-- x-init & $watch -->
+            <div x-init="$watch('posts', value => console.log(value))"></div>
+
+        <!-- x-dispatch -->
+           <div @notify="alert('You have been notified.!')">
+               <button @click="$dispatch('notify')" class="bg-green-700 p-2 rounded-lg text-white mt-4">
+                   Notify
+               </button>
+           </div>
+
+        <!-- x-data -->
+           <button @click="getLatestPost($data.posts)" class="bg-orange-800 text-white mt-6 p-2 rounded-xl">
+              Get Post
+           </button>
+           </div>
+           </div>
+           <script>
+              function getLatestPost(posts) {
+                  console.log(posts.slice(-1).pop())
+              }
+           </script>
+
+           <footer x-data class="text-center mt-10">
+              <p>Copyright &copy; <span x-text="new Date().getFullYear()"></span></p>
+           </footer>  
+
+
 
 </body>
 
